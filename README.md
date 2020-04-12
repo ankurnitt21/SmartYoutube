@@ -22,3 +22,28 @@ $ pip install -r requirements.txt
 ```sh
 $ python3 app.py
 ```
+***
+# Deploying app to Heroku
+```sh
+$ heroku create
+```
+```sh
+$ git add .
+```
+```sh
+$ git commit -m 'commit name'
+```
+```sh
+$ git push heroku master
+```
+***
+# Run on Heroku
+#### You start by assigning your app some server resources by typing:
+```sh
+$ heroku ps:scale web=1
+```
+#### To stop your application, you simply scale it down to zero by typing:
+
+```sh
+$ heroku ps:scale web=0
+```
