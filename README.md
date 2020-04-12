@@ -24,6 +24,7 @@ $ python3 app.py
 ```
 ***
 # Deploying app to Heroku
+#### (Assuming You are already logged in through CLI)
 ```sh
 $ heroku create
 ```
