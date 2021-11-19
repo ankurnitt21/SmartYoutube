@@ -7,7 +7,7 @@ Smart Tube is a web application that can be used for searching a keyword in a pa
 ***
 - Clone repository
 ```sh
-$ git clone https://github.com/ranaankur39/SmartYoutube.git
+$ git clone https://github.com/ankurnitt21/SmartYoutube.git
 ```
 - Move Inside Folder
 ```sh
