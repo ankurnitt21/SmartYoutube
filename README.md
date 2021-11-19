@@ -17,6 +17,9 @@ $ cd SmartYoutube
 ```sh
 $ pip install -r requirements.txt
 ```
+```sh
+$ python -m pip install --upgrade pytube
+```
 # Running App
 ***
 ```sh

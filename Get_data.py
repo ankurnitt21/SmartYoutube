@@ -2,7 +2,7 @@ import requests
 from urllib.parse import urlparse, parse_qs
 from xml.etree import ElementTree
 from pytube import YouTube
-
+from youtube_transcript_api import YouTubeTranscriptApi
 
 OK = 200
 
@@ -31,6 +31,9 @@ def get_video_id(url):
 
 
 def search_keywords(youtube_url, keyword):
+    id = get_video_id(youtube_url)
+    transcript = YouTubeTranscriptApi.get_transcript(id)
+
     """ Search for keyword in a YouTube video.
 
     Args:
@@ -45,24 +48,14 @@ def search_keywords(youtube_url, keyword):
     if not keyword or not youtube_url:
         return timestamps
 
-    #status_code, content = transcribe_video(youtube_url)
-    status_code=200
-    source = YouTube(youtube_url)
-    en_caption = source.captions.get_by_language_code('en')
-    content = en_caption.xml_captions
-
-    if not content:
+    if not transcript:
         print("NO CONTENT")
         return timestamps
 
-    if status_code == OK:
-        tree = ElementTree.fromstring(content)
-        for node in tree:
-            if keyword in node.text:
-                print(node.text)
-                print(node.attrib)
-                timestamps.append(float(node.attrib["start"]))
 
+    for i in transcript:
+        if keyword in i["text"]:
+            timestamps.append(float(i["start"]))
     return timestamps
 
 
