@@ -1,18 +1,11 @@
 import requests
 from urllib.parse import urlparse, parse_qs
-from xml.etree import ElementTree
-from pytube import YouTube
 from youtube_transcript_api import YouTubeTranscriptApi
-
-OK = 200
-
 
 def get_video_id(url):
     """ Get YouTube video ID from YouTube URL
-
     Args:
         url (str): YouTube URL.
-
     Returns:
         YouTube id
     """
@@ -28,21 +21,16 @@ def get_video_id(url):
     query = parse_qs(parse_result.query)
     return query["v"][0]
 
-
-
 def search_keywords(youtube_url, keyword):
     id = get_video_id(youtube_url)
     transcript = YouTubeTranscriptApi.get_transcript(id)
-
     """ Search for keyword in a YouTube video.
-
     Args:
         youtube_url (str): YouTube URL.
-
     Returns:
         list of timestamp in second(s).
     """
-
+    
     timestamps = list()
 
     if not keyword or not youtube_url:
